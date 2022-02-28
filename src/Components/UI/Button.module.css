@@ -1,0 +1,17 @@
+.button {
+  width: 8rem;
+  height: 2.1rem;
+  color: white;
+  background-color: #4f005f;
+  border: 1px solid #4f005f;
+  border-radius: 10px;
+}
+
+.button:hover {
+  background-color: rgb(136, 39, 136);
+  cursor: pointer;
+}
+
+.button:active {
+  background-color: #4f005f;
+}
