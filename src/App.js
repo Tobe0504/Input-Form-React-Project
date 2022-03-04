@@ -6,7 +6,7 @@ import classes from "./App.module.css";
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const [content, setContent] = useState(true);
 
   const addUserHandler = (data) => {
@@ -15,7 +15,14 @@ function App() {
     // });
     const newData = [...users, data];
     setUsers(newData);
-    console.log(newData);
+  };
+
+  const deleteClickHandler = (key) => {
+    const filteredData = users.filter((item) => {
+      return item.key !== key;
+    });
+
+    setUsers(filteredData);
   };
 
   const formShowHandler = () => {
@@ -29,17 +36,17 @@ function App() {
       {content ? (
         <div className={classes.buttonDiv}>
           <Button onClick={formShowHandler} className={classes.button}>
-            Show Form
+            Hide Form
           </Button>
         </div>
       ) : (
         <div className={classes.buttonDiv}>
           <Button onClick={formShowHandler} className={classes.button}>
-            Hide Form
+            Show Form
           </Button>
         </div>
       )}
-      <UserList user={users} />
+      <UserList user={users} onDeleteClick={deleteClickHandler} />
     </React.Fragment>
   );
 }
